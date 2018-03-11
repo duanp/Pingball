@@ -1,0 +1,1 @@
+board name=Default gravity=25.0
