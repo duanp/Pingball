@@ -1,0 +1,71 @@
+
+Manual testing strategy for the Pingball Server GUI, the
+Pingball GUI, and the interaction between the two.
+
+Pingball GUI:
+	Load:
+		valid file
+			expected: load and display board
+		invalid file
+			expected: ignore pressing load button
+		no file provided
+			expected: load default board
+		load while running:
+			expected: load specified board with no connected walls
+					  start out not running
+					  disconnect walls on other boards that this board
+					  is connected to
+		load new board + join walls:
+			expected: joining new walls use updated board names
+		
+	Connect:
+		valid host and port
+			expected: connect to server
+		invalid host
+			expected: ignore pressing connect button
+		
+	Disconnect:
+		when not connected
+			expected: ignore pressing disconnect button
+		when connected
+			expected: disconnect all walls of this board
+					  disconnect walls of other boards this board is connected to
+					  continue running as normal otherwise
+		
+	Pause + Resume:
+		when connected to server / when running locally
+			expected: pause game when pressing pause,
+						resume when pressing resume
+		
+	Restart:
+		locally
+			expect: should reset everything and run board
+		connected
+			reset everything, run board
+			also disconnect all walls and update labels
+	
+	Start
+		board not running but loaded:
+			expect: run board
+		board already running:
+			expect: no change, board continues to run as normal
+		
+	Exit
+		expect: close GUI window and stop execution of game
+			
+		
+Server GUI
+	Start
+		positive integer input
+			expect: instantiate server on this port
+		any other input
+		 	expect: no action
+		 	
+	Vertical/Horizontal + join
+		connected boards
+			expect: join vertically/horizontally
+					and display in table of previous joins
+		one / both boards not connected
+			expect: no action
+	
+	
